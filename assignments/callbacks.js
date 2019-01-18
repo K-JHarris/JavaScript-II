@@ -61,4 +61,24 @@ function removeDuplicates(array, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  let hasItem = false;
+  let newArray = [];
+
+  //loop through array
+  for(let i = 0; i < array.length; i++) {
+
+    //for each item check to see if newArray has it
+    for(let j = 0; j < newArray.length; j++) {
+
+      //if newArray has item flip hasItem
+      if(array[i] === newArray[j]) hasItem = true;
+    }
+
+    //if hasItem is false, push item into newArray
+    if(!hasItem) newArray.push(array[i]);
+
+    //reset hasItem
+    hasItem = false;
+  }
+  return cb(newArray);
 }
